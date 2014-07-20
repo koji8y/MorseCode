@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "MorseCode", "MorseCode\MorseCode.cproj", "{29E5B990-1DB1-46CB-ACA7-D0C6BB264BCF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29E5B990-1DB1-46CB-ACA7-D0C6BB264BCF}.Debug|AVR.ActiveCfg = Debug|AVR
+		{29E5B990-1DB1-46CB-ACA7-D0C6BB264BCF}.Debug|AVR.Build.0 = Debug|AVR
+		{29E5B990-1DB1-46CB-ACA7-D0C6BB264BCF}.Release|AVR.ActiveCfg = Release|AVR
+		{29E5B990-1DB1-46CB-ACA7-D0C6BB264BCF}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
