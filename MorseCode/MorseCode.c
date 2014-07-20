@@ -11,10 +11,10 @@
 
 #define MORSE_UNIT 250L // 250ms
 
-#define MORSE_DDR DDRB
-#define MORSE_PORT PORTB
+#define MAIN_DDR DDRB
+#define MAIN_PORT PORTB
 #define MORSE_OUTPINBIT PINB4
-#define SELECT_PIN PINB
+#define MAIN_PIN PINB
 #define SELECT_INPINBIT PB3
 
 void inCodeBreak()
@@ -32,9 +32,9 @@ void plusWordBreak()
 
 #define tone(count) \
 { \
-	MORSE_PORT |= _BV(MORSE_OUTPINBIT); \
+	MAIN_PORT |= _BV(MORSE_OUTPINBIT); \
 	_delay_ms(MORSE_UNIT * count); \
-	MORSE_PORT &= ~_BV( MORSE_OUTPINBIT); \
+	MAIN_PORT &= ~_BV( MORSE_OUTPINBIT); \
 	inCodeBreak(); \
 }
 void shortTone()
@@ -48,16 +48,16 @@ void longTone()
 
 //void shortTone()
 //{
-	//MORSE_PORT |= (1 << MORSE_OUTPINBIT);
+	//MAIN_PORT |= (1 << MORSE_OUTPINBIT);
 	//_delay_ms(MORSE_UNIT);
-	//MORSE_PORT &= !(1 << MORSE_OUTPINBIT);
+	//MAIN_PORT &= !(1 << MORSE_OUTPINBIT);
 	//inCodeBreak();
 //}
 //void longTone()
 //{
-	//MORSE_PORT |= (1 << MORSE_OUTPINBIT);
+	//MAIN_PORT |= (1 << MORSE_OUTPINBIT);
 	//_delay_ms(MORSE_UNIT * 3L);
-	//MORSE_PORT &= !(1 << MORSE_OUTPINBIT);
+	//MAIN_PORT &= !(1 << MORSE_OUTPINBIT);
 	//inCodeBreak();
 //}
 
@@ -93,7 +93,7 @@ void blink()
 	//while(1)
 	while (times > 0)
 	{
-		MORSE_PORT ^= (1 << MORSE_OUTPINBIT);
+		MAIN_PORT ^= (1 << MORSE_OUTPINBIT);
 		_delay_ms(1000);
 		times--;
 	}
@@ -101,10 +101,10 @@ void blink()
 
 int main(void)
 {
-	MORSE_DDR = 0xff ^ _BV(SELECT_INPINBIT); // set for output other than SELECT_INPINBIT
-	MORSE_PORT = _BV(SELECT_INPINBIT); // configure pull-up for SELECT_INPINBIT
+	MAIN_DDR = 0xff ^ _BV(SELECT_INPINBIT); // set for output other than SELECT_INPINBIT
+	MAIN_PORT = _BV(SELECT_INPINBIT); // configure pull-up for SELECT_INPINBIT
 	_delay_ms(2000);
-	if (bit_is_clear(SELECT_PIN, SELECT_INPINBIT)) {
+	if (bit_is_clear(MAIN_PIN, SELECT_INPINBIT)) {
 		blink();
 	} else {
 		litName();
@@ -113,5 +113,5 @@ int main(void)
 	//_delay_ms(2000);
 	//litName();
 
-	MORSE_PORT &= ~_BV(MORSE_OUTPINBIT);
+	MAIN_PORT &= ~_BV(MORSE_OUTPINBIT);
 }
