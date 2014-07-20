@@ -76,7 +76,7 @@ void charY()
 	longTone();
 }
 
-void litName()
+void lightName()
 {
 	charY();
 	plusCharBreak();
@@ -107,7 +107,7 @@ int main(void)
 	if (bit_is_clear(MAIN_PIN, SELECT_INPINBIT)) {
 		blink();
 	} else {
-		litName();
+		lightName();
 	}
 	//blink();
 	//_delay_ms(2000);
